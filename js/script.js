@@ -87,32 +87,20 @@ function actualizarResumenCarrito() {
 }
 
 // Función que se ejecuta automáticamente cuando la página termina de cargar
-window.onload = function() 
-{
+window.onload = function () {
   // Busca el contenedor donde se insertarán los productos (por ID)
   const contenedor = document.getElementById("lista-productos");
 
   // Recorre cada producto y genera su tarjeta visual en HTML
-  productos.forEach(producto => 
-  {  
-    // Inserta la estructura HTML dentro del contenedor
+  productos.forEach(producto => {
     contenedor.innerHTML += `
      <div class="col-md-4">
        <div class="card">
-         <!-- Imagen del producto -->
          <img src="${producto.imagen}" class="card-img-top" alt="${producto.nombre}">
-
          <div class="card-body">
-           <!-- Título con el nombre del producto -->
            <h5 class="card-title">${producto.nombre}</h5>
-
-           <!-- Mostrar estrellas de calificación con estilo visual -->
            <div>${obtenerEstrellas(producto.calificacion)}</div>
-
-           <!-- Mostrar el precio con separador de miles -->
            <p class="card-text">$${producto.precio.toLocaleString('es-CO')}</p>
-
-           <!-- Botón que llama a la función para agregar al carrito -->
            <button class="btn btn-success" onclick="agregarAlCarrito(${producto.id})">Agregar al carrito</button>
          </div>
        </div>
@@ -120,12 +108,31 @@ window.onload = function()
     `;
   });
 
-  // Crea el contador visual de productos en carrito (esquina superior)
   crearContadorVisual();
-
-  // Llama a la función que cuenta y guarda el número de visitas
   contarVisitas();
+
+  // ✅ Registrar evento del botón Finalizar compra
+  const botonFinalizar = document.getElementById("finalizar-compra");
+  if (botonFinalizar) {
+    botonFinalizar.addEventListener("click", function () {
+      if (carrito.length === 0) {
+        alert("El carrito ya está vacío.");
+        return;
+      }
+
+      // Vacía el carrito
+      carrito = [];
+
+      // Actualiza la interfaz
+      actualizarContador();
+      actualizarResumenCarrito();
+
+      // Muestra mensaje
+      alert("¡Gracias por tu compra!");
+    });
+  }
 };
+
 
 // Función para agregar un producto al carrito de compras
 function agregarAlCarrito(productoId) {
