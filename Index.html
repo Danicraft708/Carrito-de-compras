@@ -1,0 +1,104 @@
+<!--
+  Declaración del tipo de documento. Indica que estamos usando HTML5.
+  Es obligatorio al inicio de todo archivo HTML.
+-->
+<!DOCTYPE html>
+
+<!--
+  Etiqueta raíz del documento HTML. Todo el contenido irá dentro de <html>.
+  El atributo lang="es" indica que el idioma del contenido es español.
+-->
+<html lang="es">
+
+  <!-- Sección <head>: contiene metadatos y enlaces a recursos (no visibles en la página).-->
+  <head>
+
+    <!--
+    Define la codificación de caracteres como UTF-8, que permite usar tildes, ñ y símbolos especiales.
+    -->
+    <meta charset="UTF-8">
+
+    <!--
+      Establece que la página se adapte al tamaño de la pantalla (responsiva).
+      Ideal para que se vea correctamente en celulares, tablets y monitores.
+    -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--Título del sitio web. Aparece en la pestaña del navegador.-->
+    <title>Tienda De celulares</title>
+
+    <!--
+      Enlace al archivo CSS de Bootstrap desde su CDN (servidor en línea).
+      Bootstrap nos proporciona estilos prediseñados para que el sitio se vea moderno.
+    -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!--
+      Enlace al archivo de estilos personalizados que nosotros creamos.
+      Se encuentra en la carpeta css con el nombre style.css
+    -->
+    <link rel="stylesheet" href="css/style.css">
+
+  </head>
+
+  <!--Cuerpo del documento. Aquí va todo el contenido visible de la página.-->
+  <body>
+
+    <!--
+      Encabezado principal del sitio web.
+      Usa clases de Bootstrap para el fondo amarillo (bg-warning),
+      texto centrado (text-center) y espacio interno vertical (py-3).
+    -->
+    <header class="bg-warning text-center py-3">
+      
+      <!--Título principal del sitio. Clase text-dark: texto de color oscuro.-->
+      <h1 class="text-white">Bienvenidos a nuestra Tienda De Celulares</h1>
+
+    </header>
+
+    <!--
+      Sección principal del contenido (main).
+      container: clase de Bootstrap que centra y da márgenes al contenido.
+      my-4: margen vertical (arriba y abajo) de tamaño 4.
+    -->
+    <main class="container my-4">
+      
+      <!--
+        Contenedor de fila (row) para organizar los productos en columnas.
+        El ID "lista-productos" nos sirve para insertar dinámicamente las tarjetas desde JavaScript.
+      -->
+      <div class="row" id="lista-productos">
+        <!-- Aquí se insertarán los productos con JavaScript -->
+      </div>
+
+    </main>
+
+    <!--
+      Pie de página del sitio web.
+      bg-dark: fondo oscuro, text-white: texto blanco,
+      text-center: texto centrado, py-3: espacio vertical.
+    -->
+    <footer class="bg-dark text-white text-center py-3">
+
+      <!-- Texto del pie de página. Incluye el símbolo de copyright (&copy;)-->
+      <p>&copy; 2025 Tienda de Celulares. Todos los derechos reservados.</p>
+
+    </footer>
+
+    <!--
+      Enlace al archivo JavaScript personalizado donde está la lógica del proyecto.
+      Este archivo se encuentra en la carpeta "js" y se llama "script.js".
+    -->
+    <script src="js/script.js"></script>
+
+    <div id="carrito-resumen">
+      <span id="resumen-cantidad">Productos: 0</span>
+      <span id="resumen-total">Total: $0</span>
+      <button id="finalizar-compra">Finalizar compra</button>
+    </div>
+    
+
+  </body>
+
+<!-- Cierre de la etiqueta raíz del documento HTML. -->
+</html>
